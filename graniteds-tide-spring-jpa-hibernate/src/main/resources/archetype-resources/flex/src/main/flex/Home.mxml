@@ -1,0 +1,87 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  GRANITE DATA SERVICES
+  Copyright (C) 2011 GRANITE DATA SERVICES S.A.S.
+
+  This file is part of Granite Data Services.
+
+  Granite Data Services is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or (at your
+  option) any later version.
+
+  Granite Data Services is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+  for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with this library; if not, see <http://www.gnu.org/licenses/>.
+-->
+
+<s:VGroup
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:v="org.granite.validation.*"
+    xmlns="*"
+    width="100%" height="100%">
+
+	<fx:Metadata>[Name]</fx:Metadata>
+   	
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            
+            import org.granite.tide.events.TideResultEvent;
+            import org.granite.tide.events.TideFaultEvent;
+            
+            import ${package}.entities.Welcome;
+            import ${package}.services.WelcomeService;
+            
+            [Inject]
+            public var welcomeService:WelcomeService;
+            
+            [Bindable]
+            public var allWelcomes:ArrayCollection;
+            
+            private function findAllResult(event:TideResultEvent):void {
+                allWelcomes = ArrayCollection(event.result);
+            }
+            
+            [Observer("org.granite.tide.data.persist.Welcome")]
+            public function welcomeAdded(welcome:Welcome):void {
+                allWelcomes.addItem(welcome);
+            }
+            
+            private function hello(name:String):void {
+                welcomeService.hello(iName.text, helloResult, helloFault)
+            }
+            
+            private function helloResult(event:TideResultEvent):void {
+                iName.text = "";
+            }
+            
+            private function helloFault(event:TideFaultEvent):void {
+                lMessage.text = event.fault.faultString;
+            }
+        ]]>
+    </fx:Script>
+    
+    <s:VGroup paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" width="800">
+        <s:HGroup id="fHello">
+            <s:TextInput id="iName"/>
+            <s:Button id="bHello" label="Welcome!" click="hello(iName.text)"/>
+        </s:HGroup>
+    
+        <s:Label id="lMessage"/>
+        
+        <s:List id="dgList" dataProvider="{allWelcomes}" labelField="message" width="100%" height="200"
+            creationComplete="welcomeService.findAll(findAllResult)"/>
+    </s:VGroup>
+
+</s:VGroup>
