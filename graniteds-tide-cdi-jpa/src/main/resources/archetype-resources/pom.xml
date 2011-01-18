@@ -31,9 +31,9 @@
   
     <properties>
         <flex.framework.version>4.1.0.16076</flex.framework.version>
-        <flexmojos.version>3.7.1</flexmojos.version>
+        <flexmojos.version>3.8</flexmojos.version>
     
-        <graniteds.version>2.2.0.GA</graniteds.version>
+        <graniteds.version>2.2.0.SP1</graniteds.version>
     
         <context.root>/${artifactId}</context.root>
     </properties>
