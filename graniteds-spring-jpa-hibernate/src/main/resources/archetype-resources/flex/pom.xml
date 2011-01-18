@@ -111,7 +111,7 @@
                                 <outputEnumToBaseOutputDirectory>false</outputEnumToBaseOutputDirectory>
                             </extraOptions>
                             <includeJavaClasses>
-                                <include>org.example.entities.**</include>
+                                <include>${package}.entities.**</include>
                             </includeJavaClasses>
                         </configuration>
                     </execution>
