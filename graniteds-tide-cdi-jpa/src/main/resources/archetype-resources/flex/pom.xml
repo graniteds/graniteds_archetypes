@@ -189,6 +189,7 @@
                         <keepAs3Metadata>Transient</keepAs3Metadata>
                         <keepAs3Metadata>Id</keepAs3Metadata>
                         <keepAs3Metadata>Version</keepAs3Metadata>
+                        <keepAs3Metadata>Lazy</keepAs3Metadata>
                         <keepAs3Metadata>Name</keepAs3Metadata>
                         <keepAs3Metadata>In</keepAs3Metadata>
                         <keepAs3Metadata>Out</keepAs3Metadata>

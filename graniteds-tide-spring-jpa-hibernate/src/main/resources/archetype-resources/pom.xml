@@ -30,16 +30,16 @@
     <packaging>pom</packaging>
   
     <properties>
-        <flex.framework.version>4.1.0.16076</flex.framework.version>
+        <flex.framework.version>4.1.0.16248</flex.framework.version>
         <flexmojos.version>3.8</flexmojos.version>
     
-        <graniteds.version>2.2.0.SP1</graniteds.version>
+        <graniteds.version>2.2.2.Final</graniteds.version>
     
-        <springframework.version>3.0.5.RELEASE</springframework.version>
-        <spring.security.version>3.0.5.RELEASE</spring.security.version>
+        <springframework.version>3.0.6.RELEASE</springframework.version>
+        <spring.security.version>3.0.7.RELEASE</spring.security.version>
     
-        <hibernate.version>3.6.0.Final</hibernate.version>
-        <hibernate.validator.version>4.1.0.Final</hibernate.validator.version>
+        <hibernate.version>3.6.7.Final</hibernate.version>
+        <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
     
         <context.root>/${artifactId}</context.root>
     </properties>
@@ -49,19 +49,6 @@
         <repository>
             <id>flex-mojos-repository</id>
             <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        
-        <!-- JBoss repository for Hibernate 3.5 -->
-        <repository>
-            <id>repository.jboss.org</id>
-            <name>JBoss Repository</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
             <releases>
                 <enabled>true</enabled>
             </releases>

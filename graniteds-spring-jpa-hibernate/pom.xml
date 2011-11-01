@@ -26,7 +26,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.graniteds.archetypes</groupId>
   <artifactId>graniteds-spring-jpa-hibernate</artifactId>
-  <version>1.0.0.RC2</version>
+  <version>1.1.0.RC1</version>
   <packaging>maven-archetype</packaging>
   <name>GraniteDS Spring JPA/Hibernate archetype</name>
   <url>http://www.graniteds.org</url>
