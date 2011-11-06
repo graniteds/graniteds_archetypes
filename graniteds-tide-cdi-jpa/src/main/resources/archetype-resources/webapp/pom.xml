@@ -36,13 +36,6 @@
     <version>${version}</version>
     <name>GraniteDS/Tide CDI JPA Web App</name>
     
-    <pluginRepositories>
-		<pluginRepository>
-			<id>Glassfish</id>
-			<url>http://download.java.net/maven/glassfish/</url>
-		</pluginRepository>
-	</pluginRepositories>  
-    
     <build>
         <finalName>${rootArtifactId}</finalName>
     
@@ -59,16 +52,24 @@
             <plugin>
 				<groupId>org.glassfish</groupId>
 				<artifactId>maven-embedded-glassfish-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>3.1.1</version>
 				<configuration>
 					<goalPrefix>glassfish</goalPrefix>
 					<app>${project.build.directory}/${rootArtifactId}.war</app>
 					<port>8080</port>
 					<contextRoot>${rootArtifactId}</contextRoot>
-                    <instanceRoot>${project.build.directory}/gfembed${maven.build.timestamp}</instanceRoot>
-                    <autoDelete>true</autoDelete>
-                    <configFile>${basedir}/src/test/domain.xml</configFile>				
+                    <name>${rootArtifactId}</name>					
+					<configFile>${basedir}/src/test/resources/domain.xml</configFile>
+					<autoDelete>true</autoDelete>
+					<glassfishProperties>
+						<property>glassfish.embedded.tmpdir=target</property>
+					</glassfishProperties>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
             </plugin>
 
             <plugin>

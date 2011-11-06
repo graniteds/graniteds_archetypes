@@ -30,10 +30,10 @@
     <packaging>pom</packaging>
   
     <properties>
-        <flex.framework.version>4.1.0.16248</flex.framework.version>
-        <flexmojos.version>3.8</flexmojos.version>
+        <flex.framework.version>4.5.1.21328</flex.framework.version>
+        <flexmojos.version>4.0-RC2</flexmojos.version>
     
-        <graniteds.version>2.3.0.RC1</graniteds.version>
+        <graniteds.version>2.3.0.GA</graniteds.version>
     
         <context.root>/${artifactId}</context.root>
     </properties>

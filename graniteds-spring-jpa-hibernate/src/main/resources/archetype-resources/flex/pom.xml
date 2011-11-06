@@ -43,6 +43,14 @@
             <version>${flex.framework.version}</version>
             <type>pom</type>
         </dependency>
+		
+		<dependency> 
+			<groupId>com.adobe.flex.framework</groupId> 
+			<artifactId>spark</artifactId> 
+			<version>${flex.framework.version}</version> 
+			<type>swc</type> 
+			<scope>theme</scope> 
+		</dependency>
         
         <dependency>
           <groupId>com.adobe.flexunit</groupId>
@@ -62,7 +70,7 @@
     
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-swc</artifactId>
+            <artifactId>granite-flex45-swc</artifactId>
             <version>${graniteds.version}</version>
             <type>swc</type>
         </dependency>
@@ -102,7 +110,6 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <generatorToUse>graniteds21</generatorToUse>
                             <baseOutputDirectory>${project.build.directory}/generated-sources</baseOutputDirectory>
                             <outputDirectory>${project.build.directory}/../src/main/flex</outputDirectory>
                             <extraOptions>
@@ -118,9 +125,9 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>javax.persistence</groupId>
-                        <artifactId>persistence-api</artifactId>
-                        <version>1.0</version>
+                        <groupId>org.hibernate.javax.persistence</groupId>
+                        <artifactId>hibernate-jpa-2.0-api</artifactId>
+                        <version>1.0.1.Final</version>
                     </dependency> 
                     <dependency>
                         <groupId>javax.validation</groupId>
@@ -187,6 +194,9 @@
                     <contextRoot>${context.root}</contextRoot>
                     <sourceFile>Main.mxml</sourceFile>
                     <incremental>true</incremental>
+					<debug>true</debug>
+					<swfVersion>11</swfVersion>
+					<targetPlayer>10.2.0</targetPlayer>
                     <keepAs3Metadatas>
                         <keepAs3Metadata>Bindable</keepAs3Metadata>
                         <keepAs3Metadata>Managed</keepAs3Metadata>

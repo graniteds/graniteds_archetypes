@@ -60,19 +60,19 @@
     </fx:Script>
 
     <s:Panel title="Log in">
-        <mx:Form>
-            <mx:FormItem label="Username">
+        <s:Form>
+            <s:FormItem label="Username">
                 <s:TextInput id="username"/>
-            </mx:FormItem>
-            <mx:FormItem label="Password">
+            </s:FormItem>
+            <s:FormItem label="Password">
                 <s:TextInput id="password" displayAsPassword="true"
                     enter="tryLogin(username.text, password.text);"/>
-            </mx:FormItem>
-            <mx:FormItem>
+            </s:FormItem>
+            <s:FormItem>
                 <s:Label text="{message}" textAlign="center"/>
                 <s:Button label="Login" 
                     click="tryLogin(username.text, password.text);"/>
-            </mx:FormItem>
-        </mx:Form>
+            </s:FormItem>
+        </s:Form>
     </s:Panel>
 </s:Group>

@@ -34,7 +34,7 @@ import ${package}.entities.Welcome;
 
 
 @RemoteDestination
-@DataEnabled(topic="welcomeTopic", params=ObserveAllPublishAll.class, publish=PublishMode.ON_SUCCESS)
+@DataEnabled(topic="welcomeTopic", publish=PublishMode.ON_SUCCESS)
 public interface WelcomeService {
 
     public Welcome hello(String name);

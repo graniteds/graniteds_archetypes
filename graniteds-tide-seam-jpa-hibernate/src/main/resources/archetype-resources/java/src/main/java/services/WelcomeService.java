@@ -48,7 +48,7 @@ import ${package}.entities.Welcome;
 @Name("welcomeService")
 @Scope(ScopeType.EVENT)
 @RemoteDestination
-@DataEnabled(topic="welcomeTopic", params=ObserveAllPublishAll.class, publish=PublishMode.ON_SUCCESS)
+@DataEnabled(topic="welcomeTopic", publish=PublishMode.ON_SUCCESS)
 public class WelcomeService {
 
     @In

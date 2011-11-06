@@ -32,12 +32,12 @@
     <resource>java/src/main/java/entities/Welcome.java</resource>
     <resource>java/src/main/java/services/WelcomeService.java</resource>
     <resource>java/src/main/java/services/WelcomeServiceImpl.java</resource>
-    <resource>java/srv/main/java/services/ObserveAllPublishAll.java</resource>
+    <resource>java/src/main/resources/META-INF/beans.xml</resource>
     <resource>java/src/main/resources/META-INF/persistence.xml</resource>
     <resource>webapp/pom.xml</resource>
     <resource>webapp/src/main/webapp/WEB-INF/beans.xml</resource>
     <resource>webapp/src/main/webapp/WEB-INF/web.xml</resource>
-    <resource>webapp/src/test/domain.xml</resource>
-    <resource>webapp/src/test/keyfile</resource>
+    <resource>webapp/src/test/resources/domain.xml</resource>
+    <resource>webapp/src/test/resources/keyfile</resource>
   </resources>
 </archetype>
