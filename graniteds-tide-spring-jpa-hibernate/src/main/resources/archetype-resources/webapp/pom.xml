@@ -64,6 +64,7 @@
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
+                    <version>6.1.26</version>
                 </configuration>
 				<dependencies>
 					<dependency>
