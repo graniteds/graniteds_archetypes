@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  GRANITE DATA SERVICES
+  Copyright (C) 2011 GRANITE DATA SERVICES S.A.S.
+
+  This file is part of Granite Data Services.
+
+  Granite Data Services is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or (at your
+  option) any later version.
+
+  Granite Data Services is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+  for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with this library; if not, see <http://www.gnu.org/licenses/>.
+-->
+
+<archetype>
+    <id>GraniteDS/Tide Flex Spring JPA/Hibernate</id>
+    <resources>
+        <resource>flex/pom.xml</resource>
+        <resource>flex/src/main/flex/Main.mxml</resource>
+        <resource>flex/src/main/flex/Login.mxml</resource>
+        <resource>flex/src/main/flex/Home.mxml</resource>
+        <resource>java/pom.xml</resource>
+        <resource>java/src/main/java/entities/AbstractEntity.java</resource>
+        <resource>java/src/main/java/entities/Welcome.java</resource>
+        <resource>java/src/main/java/services/WelcomeService.java</resource>
+        <resource>java/src/main/java/services/WelcomeServiceImpl.java</resource>
+        <resource>java/src/main/resources/META-INF/persistence.xml</resource>
+        <resource>webapp/pom.xml</resource>
+        <resource>webapp/src/main/webapp/WEB-INF/spring/app-config.xml</resource>
+        <resource>webapp/src/main/webapp/WEB-INF/spring/app-jpa-config.xml</resource>
+        <resource>webapp/src/main/webapp/WEB-INF/spring/app-security-config.xml</resource>
+        <resource>webapp/src/main/webapp/WEB-INF/dispatcher-servlet.xml</resource>
+        <resource>webapp/src/main/webapp/WEB-INF/web.xml</resource>
+        <resource>webapp/src/main/etc/webdefault.xml</resource>
+    </resources>
+</archetype>
