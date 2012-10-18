@@ -59,24 +59,41 @@ public class Main extends Application {
 	
 	private static final Logger log = Logger.getLogger(Main.class);
     
+	/**
+	 * Main class that lauches the JavaFX app
+	 */
     public static void main(String[] args) {
         Application.launch(Main.class, args);
     }
     
     
+    /**
+     * Spring context configuration
+     * @author william
+     *
+     */
     @Configuration
     public static class Config {
     	
+    	/**
+    	 * Integration with the Spring event bus
+    	 */
     	@Bean
     	public SpringEventBus eventBus() {
     		return new SpringEventBus();
     	}
     	
+    	/**
+    	 * Integration with the Spring context and JavaFX 
+    	 */
     	@Bean
     	public SpringContextManager contextManager(SpringEventBus eventBus) {
     		return new SpringContextManager(new JavaFXPlatform(eventBus));
     	}
     	
+    	/**
+    	 * Configuration for server remoting and messaging using WebSocket
+    	 */
     	@Bean(initMethod="start", destroyMethod="stop")
     	public ServerSession serverSession() throws Exception {
     		ServerSession serverSession = new ServerSession("spring", "/${rootArtifactId}", "localhost", 8080);
@@ -85,27 +102,44 @@ public class Main extends Application {
         	return serverSession;
     	}
     	
+    	/**
+    	 * Identity component that integrates with server-side Spring Security 
+    	 */
     	@Bean
     	public Identity identity(ServerSession serverSession) throws Exception {
     		return new Identity(serverSession);
     	}
     	
-    	@Bean(initMethod="start", destroyMethod="stop")
-    	public DataObserver welcomeTopic(ServerSession serverSession, EntityManager entityManager) {
-    		return new DataObserver("welcomeTopic", serverSession, entityManager);
-    	}
-    	
+    	/**
+    	 * Integration with server-side Bean Validation constraint exceptions
+    	 */
     	@Bean
     	public ExceptionHandler validationExceptionHandler() {
     		return new ValidationExceptionHandler();
     	}
     	
+    	/**
+    	 * Defines the main application as a Spring bean
+    	 */
     	@Bean
     	public App init() {
     		return new App();
     	}    	
+    	
+    	/**
+    	 * Sample Gravity observer topic
+    	 */
+    	@Bean(initMethod="start", destroyMethod="stop")
+    	public DataObserver welcomeTopic(ServerSession serverSession, EntityManager entityManager) {
+    		return new DataObserver("welcomeTopic", serverSession, entityManager);
+    	}
     }
     
+    /**
+     * Main application
+     * 
+     * @author william
+     */
     public static class App {
     	
     	@Inject
@@ -116,6 +150,9 @@ public class Main extends Application {
     	
     	
     	public void start(final Stage stage) {
+    		/**
+    		 * Attaches a listener to current authentication state to switch between Login and Home screens
+    		 */
             identity.loggedInProperty().addListener(new ChangeListener<Boolean>() {
     			@Override
     			public void changed(ObservableValue<? extends Boolean> property, Boolean oldValue, Boolean newValue) {
@@ -123,6 +160,9 @@ public class Main extends Application {
     			}
             });
             
+            /**
+             * Checks for current server authentication state at startup
+             */
             identity.checkLoggedIn(new SimpleTideResponder<String>() {
     			@Override
     			public void result(TideResultEvent<String> event) {
@@ -143,6 +183,9 @@ public class Main extends Application {
     	public void stop() {
     	}
         
+    	/**
+    	 * Displays the requested screen
+    	 */
         private Parent showView(Stage stage, boolean loggedIn) {
         	try {
 	            Parent root = (Parent)TideFXMLLoader.load(contextManager.getContext(), loggedIn ? "Home.fxml" : "Login.fxml", loggedIn ? Home.class : Login.class);
@@ -161,6 +204,9 @@ public class Main extends Application {
     
     private AnnotationConfigApplicationContext applicationContext;
     
+    /**
+     * Initializes the Spring application context
+     */
     @Override
     public void start(final Stage stage) throws Exception {		
     	applicationContext = new AnnotationConfigApplicationContext();
@@ -175,6 +221,9 @@ public class Main extends Application {
     	applicationContext.getBean(App.class).start(stage);
     }
     
+    /**
+     * Destroys the Spring application context
+     */
     @Override
     public void stop() throws Exception {
     	applicationContext.getBean(App.class).stop();
