@@ -27,8 +27,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-    <display-name>GraniteDS Flex Tide/Spring</display-name>
-    <description>GraniteDS Flex Tide/Spring Archetype Application</description>
+    <display-name>GraniteDS JavaFX Tide/Spring</display-name>
+    <description>GraniteDS JavaFX Tide/Spring Archetype Application</description>
     
     <context-param>
         <param-name>contextConfigLocation</param-name>

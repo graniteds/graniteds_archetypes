@@ -1,4 +1,5 @@
-/graniteds-spring-jpa-hibernate/target
-/graniteds-tide-spring-jpa-hibernate/target
-/graniteds-tide-seam-jpa-hibernate/target
-/graniteds-tide-cdi-jpa/target
+/graniteds-tide-flex-spring-jpa-hibernate/target/
+/graniteds-tide-javafx-spring-jpa-hibernate/target/
+/graniteds-flex-spring-jpa-hibernate/target/
+/graniteds-tide-flex-cdi-jpa/target/
+/graniteds-tide-flex-seam-jpa-hibernate/target/
