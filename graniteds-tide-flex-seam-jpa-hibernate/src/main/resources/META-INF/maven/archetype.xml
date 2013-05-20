@@ -30,6 +30,7 @@
 		<resource>java/src/main/java/entities/Welcome.java</resource>
 		<resource>java/src/main/java/services/WelcomeService.java</resource>
 		<resource>java/src/main/resources/seam.properties</resource>
+        <resource>java/src/main/resources/log4j.properties</resource>
 		<resource>java/src/main/resources/META-INF/persistence.xml</resource>
 		<resource>webapp/pom.xml</resource>
 		<resource>webapp/src/etc/webdefault.xml</resource>

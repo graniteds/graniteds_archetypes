@@ -26,8 +26,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.graniteds.archetypes</groupId>
     <artifactId>graniteds-tide-flex-seam-jpa-hibernate</artifactId>
-    <version>2.0.0.M1</version>
+    <version>2.0.0.M2</version>
     <packaging>maven-archetype</packaging>
+    
     <name>GraniteDS/Tide Flex Seam JPA/Hibernate</name>
     <url>http://www.graniteds.org</url>
     <licenses>
