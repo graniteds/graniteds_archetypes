@@ -36,7 +36,7 @@
         <![CDATA[
             import org.granite.tide.spring.Spring;
             import org.granite.tide.spring.Identity;
-            import org.granite.tide.service.WebSocketServiceInitializer;
+            import org.granite.tide.service.DefaultServiceInitializer;
             import org.granite.tide.data.DataObserver;
             
             [Bindable] [Inject]
@@ -44,7 +44,7 @@
             
             private function init():void {
                 // Define service endpoint resolver
-                Spring.getInstance().getSpringContext().serviceInitializer = new WebSocketServiceInitializer('/${rootArtifactId}');
+                Spring.getInstance().getSpringContext().serviceInitializer = new DefaultServiceInitializer('/${rootArtifactId}');
                 
                 // Configuration for data push observer subscribed upon login/logout
                 // Remove if not using DataObserver
