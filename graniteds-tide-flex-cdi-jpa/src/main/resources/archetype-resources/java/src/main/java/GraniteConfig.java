@@ -27,16 +27,10 @@ package ${package};
 import org.granite.config.servlet3.ServerFilter;
 import org.granite.gravity.config.AbstractMessagingDestination;
 import org.granite.gravity.config.servlet3.MessagingDestination;
-import org.granite.tide.cdi.CDIServiceFactory;
-import org.granite.tide.cdi.Identity;
+import org.granite.tide.cdi.CDIConfigProvider;
 
 
-@ServerFilter(
-		tide=true,
-		type="cdi",
-		factoryClass=CDIServiceFactory.class,
-		tideInterfaces={Identity.class}
-)
+@ServerFilter(configProviderClass=CDIConfigProvider.class)
 public class GraniteConfig {
 
 	@MessagingDestination(noLocal=true, sessionSelector=true)
