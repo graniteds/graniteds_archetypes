@@ -50,6 +50,8 @@
         <listener-class>org.granite.config.GraniteConfigListener</listener-class>
     </listener>
     
+    <!-- Config for Flash socket policy server -->
+    <!-- 
     <context-param>
         <param-name>flashPolicyFileServer-allowDomains</param-name>
         <param-value>*:*</param-value>
@@ -57,6 +59,7 @@
     <listener>
         <listener-class>org.granite.gravity.websocket.PolicyFileServerListener</listener-class>
     </listener>
+     -->
     
     <!-- Spring MVC dispatcher servlet that handles incoming AMF requests on the /graniteamf endpoint -->
     <servlet>
