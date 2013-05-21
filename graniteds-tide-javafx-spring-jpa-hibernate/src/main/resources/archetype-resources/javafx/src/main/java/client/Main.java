@@ -88,16 +88,16 @@ public class Main extends Application {
     	 */
     	@Bean
     	public SpringContextManager contextManager(SpringEventBus eventBus) {
-    		return new SpringContextManager(new JavaFXPlatform(eventBus));
+    		return new SpringContextManager(new JavaFXPlatform(), eventBus);
     	}
     	
     	/**
     	 * Configuration for server remoting and messaging using WebSocket
     	 */
-    	@Bean(initMethod="start", destroyMethod="stop")
+    	@Bean
     	public ServerSession serverSession() throws Exception {
-    		ServerSession serverSession = new ServerSession("spring", "/${rootArtifactId}", "localhost", 8080);
-    		serverSession.setUseWebSocket(true);
+    		ServerSession serverSession = new ServerSession("/${rootArtifactId}", "localhost", 8080);
+    		serverSession.setUseWebSocket(false);
         	serverSession.addRemoteClassPackage("${package}.client.entities");
         	return serverSession;
     	}
@@ -129,7 +129,7 @@ public class Main extends Application {
     	/**
     	 * Sample Gravity observer topic
     	 */
-    	@Bean(initMethod="start", destroyMethod="stop")
+    	@Bean
     	public DataObserver welcomeTopic(ServerSession serverSession, EntityManager entityManager) {
     		return new DataObserver("welcomeTopic", serverSession, entityManager);
     	}
@@ -148,8 +148,17 @@ public class Main extends Application {
     	@Inject
     	private ContextManager contextManager;
     	
+    	@Inject
+    	private ServerSession serverSession;
     	
-    	public void start(final Stage stage) {
+    	@Inject
+    	private DataObserver welcomeTopic;
+    	
+    	
+    	public void start(final Stage stage) throws Exception {
+        	((JavaFXServerSessionStatus)serverSession.getStatus()).setStage(stage);
+        	serverSession.start();
+    		
     		/**
     		 * Attaches a listener to current authentication state to switch between Login and Home screens
     		 */
@@ -178,9 +187,13 @@ public class Main extends Application {
 					message.setVisible(true);
     			}
             });
+            
+            welcomeTopic.start();
     	}
     	
-    	public void stop() {
+    	public void stop() throws Exception {
+    		// welcomeTopic.stop();
+    		serverSession.stop();
     	}
         
     	/**
@@ -209,15 +222,16 @@ public class Main extends Application {
      */
     @Override
     public void start(final Stage stage) throws Exception {		
+    	// Bootstrap Spring with an annotation based context
     	applicationContext = new AnnotationConfigApplicationContext();
+    	// Indicates the packages to scan for beans
     	applicationContext.scan("${package}.client");
     	applicationContext.scan("${package}.client.services");
     	applicationContext.refresh();
     	applicationContext.registerShutdownHook();
     	applicationContext.start();
     	
-    	ServerSession serverSession = applicationContext.getBean(ServerSession.class);
-    	((JavaFXServerSessionStatus)serverSession.getStatus()).setStage(stage);
+    	// Start the application
     	applicationContext.getBean(App.class).start(stage);
     }
     
@@ -226,8 +240,10 @@ public class Main extends Application {
      */
     @Override
     public void stop() throws Exception {
+    	// Stop the application
     	applicationContext.getBean(App.class).stop();
     	
+    	// Stop the Spring container
     	applicationContext.stop();
     	applicationContext.destroy();
     }

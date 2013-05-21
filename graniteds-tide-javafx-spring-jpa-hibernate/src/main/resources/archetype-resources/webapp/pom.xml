@@ -68,11 +68,20 @@
                     </webApp>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <path>${context.root}</path>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     
     <dependencies>
         <!-- Necessary to allow websocket support in Jetty maven plugin (??) -->
+        <!-- 
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-websocket</artifactId>
@@ -83,6 +92,7 @@
             <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
         </dependency>
+         -->
         
         <dependency>
             <groupId>${groupId}</groupId>

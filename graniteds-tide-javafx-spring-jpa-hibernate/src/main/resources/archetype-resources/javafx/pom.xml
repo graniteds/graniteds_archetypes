@@ -165,8 +165,7 @@
                                     baseoutputdir="${project.build.directory}/generated-sources/gfx" 
                                     tide="true"
                                     uid="uid"
-                                    entityfactory="org.granite.generator.as3.BVEntityFactory"
-                                    remotetemplate="class:org/granite/generator/javafx/template/tideSpringRemote.gsp">
+                                    entityfactory="org.granite.generator.as3.BVEntityFactory">
                                     <translator java="${package}" client="${package}.client"/>
                                     <classpath>
                                         <path refid="maven.plugin.classpath"/>
