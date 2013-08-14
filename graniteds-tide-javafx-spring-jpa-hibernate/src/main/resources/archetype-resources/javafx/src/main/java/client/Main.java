@@ -33,8 +33,7 @@ import javax.inject.Inject;
 import org.granite.client.tide.ContextManager;
 import org.granite.client.tide.data.DataObserver;
 import org.granite.client.tide.data.EntityManager;
-import org.granite.client.tide.data.ValidationExceptionHandler;
-import org.granite.client.tide.javafx.JavaFXPlatform;
+import org.granite.client.tide.javafx.JavaFXApplication;
 import org.granite.client.tide.javafx.JavaFXServerSessionStatus;
 import org.granite.client.tide.javafx.TideFXMLLoader;
 import org.granite.client.tide.javafx.spring.Identity;
@@ -45,6 +44,7 @@ import org.granite.client.tide.server.TideFaultEvent;
 import org.granite.client.tide.server.TideResultEvent;
 import org.granite.client.tide.spring.SpringContextManager;
 import org.granite.client.tide.spring.SpringEventBus;
+import org.granite.client.tide.validation.ValidationExceptionHandler;
 import org.granite.logging.Logger;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -88,17 +88,17 @@ public class Main extends Application {
     	 */
     	@Bean
     	public SpringContextManager contextManager(SpringEventBus eventBus) {
-    		return new SpringContextManager(new JavaFXPlatform(), eventBus);
+    		return new SpringContextManager(new JavaFXApplication(), eventBus);
     	}
     	
     	/**
-    	 * Configuration for server remoting and messaging using WebSocket
+    	 * Configuration for server remoting and messaging
     	 */
     	@Bean
     	public ServerSession serverSession() throws Exception {
     		ServerSession serverSession = new ServerSession("/${rootArtifactId}", "localhost", 8080);
     		serverSession.setUseWebSocket(false);
-        	serverSession.addRemoteClassPackage("${package}.client.entities");
+        	serverSession.addRemoteAliasPackage("${package}.client.entities");
         	return serverSession;
     	}
     	
@@ -131,14 +131,12 @@ public class Main extends Application {
     	 */
     	@Bean
     	public DataObserver welcomeTopic(ServerSession serverSession, EntityManager entityManager) {
-    		return new DataObserver("welcomeTopic", serverSession, entityManager);
+    		return new DataObserver(serverSession, entityManager);
     	}
     }
     
     /**
      * Main application
-     * 
-     * @author william
      */
     public static class App {
     	
@@ -156,8 +154,10 @@ public class Main extends Application {
     	
     	
     	public void start(final Stage stage) throws Exception {
+    	    /**
+    	     * Attach stage to server session (mostly for busy cursor handling)
+    	     */
         	((JavaFXServerSessionStatus)serverSession.getStatus()).setStage(stage);
-        	serverSession.start();
     		
     		/**
     		 * Attaches a listener to current authentication state to switch between Login and Home screens
@@ -187,13 +187,9 @@ public class Main extends Application {
 					message.setVisible(true);
     			}
             });
-            
-            welcomeTopic.start();
     	}
     	
     	public void stop() throws Exception {
-    		// welcomeTopic.stop();
-    		serverSession.stop();
     	}
         
     	/**
@@ -224,7 +220,7 @@ public class Main extends Application {
     public void start(final Stage stage) throws Exception {		
     	// Bootstrap Spring with an annotation based context
     	applicationContext = new AnnotationConfigApplicationContext();
-    	// Indicates the packages to scan for beans
+    	// Indicates the packages to scan for Spring beans
     	applicationContext.scan("${package}.client");
     	applicationContext.scan("${package}.client.services");
     	applicationContext.refresh();

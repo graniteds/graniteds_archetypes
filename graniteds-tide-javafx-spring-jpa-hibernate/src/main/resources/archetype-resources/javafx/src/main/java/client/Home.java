@@ -36,9 +36,9 @@ import javafx.util.Callback;
 import javax.inject.Inject;
 
 import org.granite.client.tide.data.EntityManager.UpdateKind;
+import org.granite.client.tide.server.EmptyTideResponder;
 import org.granite.client.tide.server.SimpleTideResponder;
 import org.granite.client.tide.server.TideFaultEvent;
-import org.granite.client.tide.server.TideMergeResponder;
 import org.granite.client.tide.server.TideResultEvent;
 import org.granite.client.tide.spring.TideApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -55,13 +55,13 @@ import ${package}.client.services.WelcomeService;
 @Component
 public class Home implements Initializable, ApplicationListener<TideApplicationEvent> {
 
-	@FXML
+	@FXML 
 	private TextField fieldHello;
-
-	@FXML
+	
+	@FXML 
 	private ListView<Welcome> listWelcomes;
 	
-	@FXML
+	@FXML 
 	private Label labelMessage;
 	
 	@Inject
@@ -71,6 +71,9 @@ public class Home implements Initializable, ApplicationListener<TideApplicationE
 	@SuppressWarnings("unused")
 	@FXML
 	private void hello(ActionEvent event) {
+	    /**
+	     * Issue a remote call to the welcome service and display result or error
+	     */
 		welcomeService.hello(fieldHello.getText(), 
 			new SimpleTideResponder<Welcome>() {
 				@Override
@@ -93,13 +96,20 @@ public class Home implements Initializable, ApplicationListener<TideApplicationE
 	
 	@Override
 	public void onApplicationEvent(TideApplicationEvent event) {
+	    /**
+	     * Handle PERSIST messages received from the real-time topic
+	     */
 		if (event.getType().equals(UpdateKind.PERSIST.eventName(Welcome.class)))
 			listWelcomes.getItems().add((Welcome)event.getArgs()[0]);
 	}
-
+	
 
 	@Override
 	public void initialize(URL url, ResourceBundle bundle) {
+	    /**
+	     * Attach a bound text cell to the list view so remote updates can be done
+	     * through data binding
+	     */
 		listWelcomes.setCellFactory(new Callback<ListView<Welcome>, ListCell<Welcome>>() {
 			@Override
 			public ListCell<Welcome> call(ListView<Welcome> listView) {
@@ -118,19 +128,11 @@ public class Home implements Initializable, ApplicationListener<TideApplicationE
 			}
 		});
 		
-		welcomeService.findAll(new TideMergeResponder<List<Welcome>>() {
-			@Override
-			public void result(TideResultEvent<List<Welcome>> event) {
-			}
-			
-			@Override
-			public void fault(TideFaultEvent event) {
-			}
-			
-			@Override
-			public List<Welcome> getMergeResultWith() {
-				return listWelcomes.getItems();
-			}
-		});
+		/**
+		 * Trigger a remote call to find current list of welcome objects
+		 * Use the mergeWith property to automatically merge the results with the 
+		 * collection bound to the ListView
+		 */
+		welcomeService.findAll(EmptyTideResponder.<List<Welcome>>mergeWith(listWelcomes.getItems()));
 	}
 }

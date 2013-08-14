@@ -120,13 +120,7 @@
         </dependency>
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-java-client</artifactId>
-            <version>${graniteds.version}</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.graniteds</groupId>
-            <artifactId>granite-javafx-client</artifactId>
+            <artifactId>granite-client-javafx</artifactId>
             <version>${graniteds.version}</version>
             <type>jar</type>
         </dependency>
@@ -190,7 +184,7 @@
                         <groupId>org.hibernate.javax.persistence</groupId>
                         <artifactId>hibernate-jpa-2.0-api</artifactId>
                         <version>1.0.1.Final</version>
-                    </dependency> 
+                    </dependency>
                     <dependency>
                         <groupId>javax.validation</groupId>
                         <artifactId>validation-api</artifactId>
@@ -269,7 +263,7 @@
 		            </execution>
 		        </executions>
 		    </plugin>
-
+            
             <plugin>
                 <!-- copy all dependencies of your app to target folder-->
                 <groupId>org.apache.maven.plugins</groupId>
