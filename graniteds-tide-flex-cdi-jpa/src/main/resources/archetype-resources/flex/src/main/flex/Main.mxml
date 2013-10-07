@@ -36,15 +36,15 @@
         <![CDATA[
             import org.granite.tide.cdi.Cdi;
             import org.granite.tide.cdi.Identity;
-            import org.granite.tide.service.DefaultServiceInitializer;
+            import org.granite.tide.service.SimpleServerApp;
             import org.granite.tide.data.DataObserver;
             
             [Bindable] [Inject]
             public var identity:Identity;
             
             private function init():void {
-                // Define service endpoint resolver
-                Cdi.getInstance().getCdiContext().serviceInitializer = new DefaultServiceInitializer('/${rootArtifactId}');
+                // Define server application endpoint
+                Cdi.getInstance().mainServerSession.serverApp = new SimpleServerApp('/${rootArtifactId}');
                 
                 // Configuration for data push observer subscribed upon login/logout
                 // Remove if not using DataObserver

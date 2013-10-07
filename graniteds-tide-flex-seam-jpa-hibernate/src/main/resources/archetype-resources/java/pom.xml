@@ -102,22 +102,22 @@
   
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-core</artifactId>
+            <artifactId>granite-server</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
         
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-hibernate</artifactId>
+            <artifactId>granite-server-hibernate</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-seam21</artifactId>
+            <artifactId>granite-server-seam</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
-  
+        
         <dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>

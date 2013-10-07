@@ -59,43 +59,43 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.0.2.GA</version>
+            <version>4.3.1.Final</version>
             <scope>provided</scope>
         </dependency>
   
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-core</artifactId>
+            <artifactId>granite-server</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-hibernate</artifactId>
+            <artifactId>granite-server-hibernate</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-hibernate4</artifactId>
+            <artifactId>granite-server-hibernate4</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-eclipselink</artifactId>
+            <artifactId>granite-server-eclipselink</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-beanvalidation</artifactId>
+            <artifactId>granite-server-beanvalidation</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-cdi</artifactId>
+            <artifactId>granite-server-cdi</artifactId>
             <version>${graniteds.version}</version>
         </dependency>
         

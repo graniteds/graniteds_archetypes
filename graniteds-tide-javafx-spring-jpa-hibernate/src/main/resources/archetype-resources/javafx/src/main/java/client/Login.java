@@ -35,11 +35,11 @@ import javax.inject.Inject;
 import org.granite.client.tide.data.DataObserver;
 import org.granite.client.tide.events.TideEvent;
 import org.granite.client.tide.events.TideEventObserver;
-import org.granite.client.tide.javafx.spring.Identity;
 import org.granite.client.tide.server.ServerSession;
 import org.granite.client.tide.server.SimpleTideResponder;
 import org.granite.client.tide.server.TideFaultEvent;
 import org.granite.client.tide.server.TideResultEvent;
+import org.granite.client.javafx.tide.spring.Identity;
 import org.springframework.stereotype.Component;
 
 /**

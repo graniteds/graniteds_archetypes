@@ -58,14 +58,14 @@
         <dependency>
             <scope>internal</scope>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-essentials-swc</artifactId>
+            <artifactId>granite-client-flex</artifactId>
             <version>${graniteds.version}</version>
             <type>swc</type>
         </dependency>
     
         <dependency>
             <groupId>org.graniteds</groupId>
-            <artifactId>granite-flex45-swc</artifactId>
+            <artifactId>granite-client-flex45-advanced</artifactId>
             <version>${graniteds.version}</version>
             <type>swc</type>
         </dependency>
@@ -188,7 +188,7 @@
                     </dependency>
                     <dependency>
                         <groupId>org.graniteds</groupId>
-                        <artifactId>granite-core</artifactId>
+                        <artifactId>granite-server-core</artifactId>
                         <version>${graniteds.version}</version>
                     </dependency>
                     <dependency>

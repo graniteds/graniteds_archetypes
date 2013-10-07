@@ -33,7 +33,7 @@
         <flex.framework.version>4.6.b.23201</flex.framework.version>
         <flexmojos.version>4.2-beta</flexmojos.version>
         
-        <graniteds.version>3.0.0.M3</graniteds.version>
+        <graniteds.version>3.0.0.RC</graniteds.version>
         
         <springframework.version>3.1.4.RELEASE</springframework.version>
         <spring.security.version>3.1.4.RELEASE</spring.security.version>

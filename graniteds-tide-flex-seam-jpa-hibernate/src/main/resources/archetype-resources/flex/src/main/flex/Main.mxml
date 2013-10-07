@@ -36,15 +36,15 @@
         <![CDATA[
             import org.granite.tide.seam.Seam;
             import org.granite.tide.seam.security.Identity;
-            import org.granite.tide.service.DefaultServiceInitializer;
+            import org.granite.tide.service.SimpleServerApp;
             import org.granite.tide.data.DataObserver;
             
             [Bindable] [In]
             public var identity:Identity;
             
             private function init():void {
-                // Define service endpoint resolver
-                Seam.getInstance().getSeamContext().serviceInitializer = new DefaultServiceInitializer('/${rootArtifactId}');
+				// Define server application endpoint
+                Seam.getInstance().mainServerSession.serverApp = new SimpleServerApp('/${rootArtifactId}');
                 
                 // Configuration for data push observer subscribed upon login/logout
                 // Remove if not using DataObserver

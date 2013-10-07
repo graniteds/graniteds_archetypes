@@ -33,10 +33,10 @@ import javax.inject.Inject;
 import org.granite.client.tide.ContextManager;
 import org.granite.client.tide.data.DataObserver;
 import org.granite.client.tide.data.EntityManager;
-import org.granite.client.tide.javafx.JavaFXApplication;
-import org.granite.client.tide.javafx.JavaFXServerSessionStatus;
-import org.granite.client.tide.javafx.TideFXMLLoader;
-import org.granite.client.tide.javafx.spring.Identity;
+import org.granite.client.javafx.tide.JavaFXApplication;
+import org.granite.client.javafx.tide.JavaFXServerSessionStatus;
+import org.granite.client.javafx.tide.TideFXMLLoader;
+import org.granite.client.javafx.tide.spring.Identity;
 import org.granite.client.tide.server.ExceptionHandler;
 import org.granite.client.tide.server.ServerSession;
 import org.granite.client.tide.server.SimpleTideResponder;
@@ -97,7 +97,6 @@ public class Main extends Application {
     	@Bean
     	public ServerSession serverSession() throws Exception {
     		ServerSession serverSession = new ServerSession("/${rootArtifactId}", "localhost", 8080);
-    		serverSession.setUseWebSocket(false);
         	serverSession.addRemoteAliasPackage("${package}.client.entities");
         	return serverSession;
     	}
@@ -130,8 +129,8 @@ public class Main extends Application {
     	 * Sample Gravity observer topic
     	 */
     	@Bean
-    	public DataObserver welcomeTopic(ServerSession serverSession, EntityManager entityManager) {
-    		return new DataObserver(serverSession, entityManager);
+    	public DataObserver welcomeTopic(ServerSession serverSession) {
+    		return new DataObserver(serverSession);
     	}
     }
     
