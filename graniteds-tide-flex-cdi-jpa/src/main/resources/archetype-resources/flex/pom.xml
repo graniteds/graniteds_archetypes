@@ -136,7 +136,7 @@
                             <extraOptions>
                                 <tide>true</tide>
                                 <uid>uid</uid>
-                                <entityFactory>org.granite.generator.as3.HVEntityFactory</entityFactory>
+                                <entityFactory>org.granite.generator.as3.BVEntityFactory</entityFactory>
                                 <outputEnumToBaseOutputDirectory>false</outputEnumToBaseOutputDirectory>
                             </extraOptions>
                             <includeJavaClasses>

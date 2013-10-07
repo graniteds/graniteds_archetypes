@@ -36,7 +36,7 @@ import javafx.util.Callback;
 import javax.inject.Inject;
 
 import org.granite.client.tide.data.EntityManager.UpdateKind;
-import org.granite.client.tide.server.EmptyTideResponder;
+import org.granite.client.tide.server.TideResponders;
 import org.granite.client.tide.server.SimpleTideResponder;
 import org.granite.client.tide.server.TideFaultEvent;
 import org.granite.client.tide.server.TideResultEvent;
@@ -133,6 +133,6 @@ public class Home implements Initializable, ApplicationListener<TideApplicationE
 		 * Use the mergeWith property to automatically merge the results with the 
 		 * collection bound to the ListView
 		 */
-		welcomeService.findAll(EmptyTideResponder.<List<Welcome>>mergeWith(listWelcomes.getItems()));
+		welcomeService.findAll(TideResponders.<List<Welcome>>mergeWith(listWelcomes.getItems()));
 	}
 }
