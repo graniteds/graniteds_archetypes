@@ -69,12 +69,12 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.0.0.GA</version>
+            <version>1.1.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.3.0.Final</version>
+            <version>5.0.1.Final</version>
         </dependency>
         <dependency>
             <groupId>cglib</groupId>
@@ -89,27 +89,21 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>net.sf.extcos</groupId>
-            <artifactId>extcos</artifactId>
-            <version>0.3b</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpasyncclient</artifactId>
-            <version>4.0-beta4</version>
+            <version>4.0</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-client</artifactId>
-            <version>8.1.13.v20130916</version>
+            <version>8.1.14.v20131031</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-websocket</artifactId>
-            <version>8.1.13.v20130916</version>
+            <version>8.1.14.v20131031</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -182,13 +176,13 @@
                     </dependency>
                     <dependency>
                         <groupId>org.hibernate.javax.persistence</groupId>
-                        <artifactId>hibernate-jpa-2.0-api</artifactId>
-                        <version>1.0.1.Final</version>
+                        <artifactId>hibernate-jpa-2.1-api</artifactId>
+                        <version>1.0.0.Final</version>
                     </dependency>
                     <dependency>
                         <groupId>javax.validation</groupId>
                         <artifactId>validation-api</artifactId>
-                        <version>1.0.0.GA</version>
+                        <version>1.1.0.Final</version>
                     </dependency> 
                     <dependency>
                         <groupId>javax.jdo</groupId>
@@ -218,7 +212,7 @@
                     <dependency>
                         <groupId>org.springframework.data</groupId>
                         <artifactId>spring-data-jpa</artifactId>
-                        <version>1.1.0.RELEASE</version>
+                        <version>1.4.3.RELEASE</version>
                     </dependency> 
                     <dependency>
                         <groupId>org.graniteds</groupId>
@@ -287,21 +281,12 @@
             </plugin>
             
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>2.0</version>
                 <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <JavaFX-Version>${javafx.version}+</JavaFX-Version>
-                            <Main-Class>${package}.client.Main</Main-Class>
-                            <implementation-version>1.0</implementation-version>
-                            <JavaFX-Application-Class>${package}.client.Main</JavaFX-Application-Class>
-                            <Class-Path>javafx-${javafx.version}.jar</Class-Path>
-                        </manifestEntries>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                        </manifest>
-                    </archive>
+                    <mainClass>${package}.client.Main</mainClass>
+                    <jfxMainAppJarName>${rootArtifactId}</jfxMainAppJarName>
                 </configuration>
             </plugin>
         </plugins>

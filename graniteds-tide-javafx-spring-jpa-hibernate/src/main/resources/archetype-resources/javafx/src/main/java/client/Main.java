@@ -74,21 +74,13 @@ public class Main extends Application {
      */
     @Configuration
     public static class Config {
-    	
-    	/**
-    	 * Integration with the Spring event bus
-    	 */
-    	@Bean
-    	public SpringEventBus eventBus() {
-    		return new SpringEventBus();
-    	}
-    	
+        
     	/**
     	 * Integration with the Spring context and JavaFX 
     	 */
     	@Bean
-    	public SpringContextManager contextManager(SpringEventBus eventBus) {
-    		return new SpringContextManager(new JavaFXApplication(), eventBus);
+    	public SpringContextManager contextManager() {
+    		return new SpringContextManager(new JavaFXApplication());
     	}
     	
     	/**
@@ -153,6 +145,9 @@ public class Main extends Application {
     	
     	
     	public void start(final Stage stage) throws Exception {
+    	    serverSession.start();
+    	    welcomeTopic.start();
+    	    
     	    /**
     	     * Attach stage to server session (mostly for busy cursor handling)
     	     */
@@ -189,6 +184,8 @@ public class Main extends Application {
     	}
     	
     	public void stop() throws Exception {
+    	    welcomeTopic.stop();
+    	    serverSession.stop();
     	}
         
     	/**

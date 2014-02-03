@@ -38,7 +38,7 @@
     <name>GraniteDS/Tide JavaFX Spring JPA/Hibernate Web App</name>
     
     <properties>
-        <jetty.version>8.1.13.v20130916</jetty.version>
+        <jetty.version>8.1.14.v20131031</jetty.version>
         
         <context.root>/${rootArtifactId}</context.root>
     </properties>

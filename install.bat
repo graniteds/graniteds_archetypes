@@ -1,20 +1,20 @@
 cd graniteds-flex-spring-jpa-hibernate
-mvn install
+mvn install -Dgpg.passphrase=$1
 cd ..
 
 cd graniteds-tide-flex-cdi-jpa
-mvn install
+mvn install -Dgpg.passphrase=$1
 cd ..
 
 cd graniteds-tide-flex-seam-jpa-hibernate
-mvn install
+mvn install -Dgpg.passphrase=$1
 cd ..
 
 cd graniteds-tide-flex-spring-jpa-hibernate
-mvn install
+mvn install -Dgpg.passphrase=$1
 cd ..
 
 cd graniteds-tide-javafx-spring-jpa-hibernate
-mvn install
+mvn install -Dgpg.passphrase=$1
 cd ..
 

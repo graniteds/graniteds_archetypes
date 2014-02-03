@@ -149,13 +149,13 @@
                 <dependencies>
                     <dependency>
                         <groupId>org.hibernate.javax.persistence</groupId>
-                        <artifactId>hibernate-jpa-2.0-api</artifactId>
-                        <version>1.0.1.Final</version>
+                        <artifactId>hibernate-jpa-2.1-api</artifactId>
+                        <version>1.0.0.Final</version>
                     </dependency> 
                     <dependency>
                         <groupId>javax.validation</groupId>
                         <artifactId>validation-api</artifactId>
-                        <version>1.0.0.GA</version>
+                        <version>1.1.0.Final</version>
                     </dependency> 
                     <dependency>
                         <groupId>javax.jdo</groupId>
